@@ -29,9 +29,9 @@ lettersArray.forEach(letter => {
 
 // Object Of Words + Categories
 const words = {
-  programming: ["php", "javascript", "go", "scala", "fortran", "r", "mysql", "python"],
+  programming: ["php", "javascript", "go", "r", "python"],
   movies: ["Prestige", "Inception", "Parasite", "Interstellar", "Whiplash", "Memento", "Coco", "Up"],
-  people: ["Albert Einstein", "Hitchcock", "Alexander", "Cleopatra", "Mahatma Ghandi"],
+  people: ["Albert Einstein", "Hitchcock", "Alexander", "Cleopatra", "Messi"],
   countries: ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar"]
 }
 
@@ -44,6 +44,7 @@ let randomPropNumber = Math.floor(Math.random() * allKeys.length);
 
 // Category
 let randomPropName = allKeys[randomPropNumber];
+console.log(randomPropName)
 
 // Category Words
 let randomPropValue = words[randomPropName];
@@ -53,6 +54,7 @@ let randomValueNumber = Math.floor(Math.random() * randomPropValue.length);
 
 // The Chosen Word
 let randomValueValue = randomPropValue[randomValueNumber];
+console.log(randomValueValue)
 
 // Set Category Info
 document.querySelector(".game-info .category span").innerHTML = randomPropName;
@@ -183,5 +185,75 @@ function endGame() {
   // Append To The Body
   document.body.appendChild(div);
 
+}
+
+
+// handle try again button
+let btn = document.querySelector(".btn button");
+let body = document.querySelector("body");
+
+btn.addEventListener("click", () => {
+  window.location.reload();
+})
+
+// Handle Hints 
+let hint = document.querySelector(".game-hint");
+let theHint = document.querySelector(".game-hint span");
+
+// i will handle each category according to its name
+// Programming Category 
+if (randomPropName === 'programming') {
+  if (randomValueValue === 'javascript') {
+    theHint.innerHTML = "The Best Programming Langauge for building websites";
+  } else if (randomValueValue === 'php') {
+    theHint.innerHTML = "Programming Langauge we use when we want to make the backend for the website";
+  } else if (randomValueValue === 'python') {
+    theHint.innerHTML = "Programming Langauge that have many uses in data sience and machine learning and more";
+  } else if (randomValueValue === 'go') {
+    theHint.innerHTML = "Programming Langauge that its name is a verb";
+  } else if (randomValueValue === 'r') {
+    theHint.innerHTML = "The Most Famous Programming Langauge that has one letter";
+  }
+}
+
+// Movies Category
+if (randomPropName === 'movies') {
+  if (randomValueValue === 'Inception' || randomValueValue === 'Prestige' || randomValueValue === 'Interstellar' || randomValueValue === 'Memento') {
+    theHint.innerHTML = "a film by cristopher nolan";
+  } else if (randomValueValue === 'Parasite') {
+    theHint.innerHTML = "a korean film won an oscar";
+  } else if (randomValueValue === 'Whiplash') {
+    theHint.innerHTML = "an american film that taks about passion";
+  } else if (randomValueValue === "Coco" || randomValueValue === "Up") {
+    theHint.innerHTML = "an animation film";
+  }
+}
+
+// People Catgeory
+if (randomPropName === "people") {
+  if (randomValueValue === "Albert Einstein") {
+    theHint.innerHTML = "The Most Famous Sceinetst In The History";
+  } else if (randomValueValue === "Hitchcock") {
+    theHint.innerHTML = "The Director who invented the dolby zoom";
+  } else if (randomValueValue === "Alexander") {
+    theHint.innerHTML = "The Most Famous Conqreuer In Ancient Greece";
+  } else if (randomValueValue === "Messi") {
+    theHint.innerHTML = "The Best Player In The History Of Football";
+  } else {
+    theHint.innerHTML = "The Most Famous Queen In Anceint Egypt";
+  }
+}
+
+// Country Category 
+if (randomPropName === "countries") {
+  if (randomValueValue === "Syria" || randomValueValue === "Yemen" || randomValueValue === "Bahrain") {
+    theHint.innerHTML = "A Country From The Middle East";
+  } else if (randomValueValue === "Egypt") {
+    theHint.innerHTML = "A Country That Have The Most Ancinet History";
+  } else if (randomValueValue === "Palestine") {
+    theHint.innerHTML = "🍉"
+  } else if (randomValueValue === "Qatar") {
+    theHint.innerHTML = "The First Country That Hostes The World Cup";
+  }
 }
 
